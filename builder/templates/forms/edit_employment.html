@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/form/style.css' %}">
+    <title>Employment Details</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="text">Employment Details</div>
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            <div class="form-row">
+                <div class="input-data">
+                    {{form.job_title}}
+                    <div class="underline"></div>
+                    <label for="job_title">Job Title</label>
+                </div>
+                <div class="input-data">
+                    {{form.employer}}
+                    <div class="underline"></div>
+                    <label for="employer">Employer</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-data date" style="margin-top: 10px;">
+                    {{form.start_date}}
+                    <div class="underline"></div>
+                    <label for="start_date">Start Date</label>
+                </div>
+                <div class="input-data date" style="margin-top: 10px;">
+                    {{form.end_date}}
+                    <div class="underline"></div>
+                    <label for="end_date">End Date</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-data">
+                    {{form.city}}
+                    <div class="underline"></div>
+                    <label for="city">City</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-data textarea">
+                    {{form.description}}
+                    <div class="underline"></div>
+                    <label for="description">Job Description</label>
+                </div>
+            </div>
+
+            <div class="form-row submit-btn">
+                <div class="input-data">
+                    <div class="inner"></div>
+                    <input type="submit" value="Save">
+                </div>
+            </div>
+
+            <script>
+                var start_date = document.getElementsById('id_end_date');
+                start_date.type = 'date';
+            </script>
+            
+        </form>
+    </div>
+  
+</body>
+
+</html>

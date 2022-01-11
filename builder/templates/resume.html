@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+</head>
+<body>
+    <h1>Hello</h1>
+
+    <h1>{{user}}</h1>
+    <h4>{{summary.summary}}</h4>
+    {% for item in employment %}
+    <ul>
+        <li>{{item.user}}</li>
+        <li>{{item.job_title}}</li>
+        <li>{{item.employer}}</li>
+        <li>{{item.start_date}}</li>
+        <li>{{item.end_date}}</li>
+
+    </ul>
+    {% endfor %}
+
+    {% for item in education %}
+        <ul>
+            <li>{{item.school}}</li>
+            <li>{{item.degree}}</li>
+            <li>{{item.start_date}}</li>
+            <li>{{item.end_date}}</li>
+        </ul>
+    {% endfor %}
+
+
+    {% for item in social %}
+        <ul>
+            <li>{{item.label}}</li>
+            <li>{{item.link}}</li>
+        </ul>
+    {% endfor %}
+</body>
+</html>

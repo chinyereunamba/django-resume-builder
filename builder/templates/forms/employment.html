@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/form/style.css' %}">
+    <title>Employment Details</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="text">Employment Details</div>
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            <div class="form-row">
+                <div class="input-data">
+                    <input type="text" name="job_title" id="" required>
+                    <div class="underline"></div>
+                    <label for="job_title">Job Title</label>
+                </div>
+                <div class="input-data">
+                    <input type="text" name="employer" id="" required>
+                    <div class="underline"></div>
+                    <label for="employer">Employer</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-data date" style="margin-top: 10px;">
+                    <input type="date" name="start_date" id="" required>
+                    <div class="underline"></div>
+                    <label for="start_date">Start Date</label>
+                </div>
+                <div class="input-data date" style="margin-top: 10px;">
+                    <input type="date" name="end_date" id="" required>
+                    <div class="underline"></div>
+                    <label for="end_date">End Date</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-data">
+                    <input type="text" name="city" id="" required>
+                    <div class="underline"></div>
+                    <label for="city">City</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-data textarea">
+                    <textarea name="description" id="" cols="30" rows="10" required></textarea>
+                    <div class="underline"></div>
+                    <label for="description">Job Description</label>
+                </div>
+            </div>
+
+            <div class="form-row submit-btn">
+                <div class="input-data">
+                    <div class="inner"></div>
+                    <input type="submit" value="add">
+                </div>
+            </div>
+
+            <div class="form-row btn">
+                <div class="input-data">
+                    <div class="inner"></div>
+                    <a href="{% url 'summary' %}">Previous</a>
+                </div>
+                <div class="input-data">
+                    <div class="inner"></div>
+                    <a href="{% url 'educationInfo' %}">Next</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    {% for item in employment %}
+    <div class="info-container" style='margin-top: 10px;'>
+        <div class="info">
+            <div class="title">
+                <h2>{{item.employer}}</h2>
+                <p>{{item.job_title}}</p>
+            </div>
+            <div class="date">
+                <p>{{item.start_date}} - {{item.end_date}}</p>
+            </div>
+
+            <div class="action-btn">
+                <a href="{% url 'update_employment' item.id %}">Edit</a>
+                <a href="{% url 'delete_employment' item.id %}">Remove</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</body>
+
+</html>

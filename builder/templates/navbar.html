@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <title>Résumé Builder | {% block title %}{% endblock title %}</title>
+</head>
+
+<body>
+    <div class="main-container">
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="{% static 'images/favicon.png' %}" alt="">
+                    <a href="{% url 'home' %}">
+                        <h1>Résumé Builder</h1>
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="{% url 'template' %}" class="nav-link">Build Résumé</a></li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item"><a href="{% url 'user' %}" class="nav-btn nav-link">Hello, {{user}}</a></li>
+                    <li class="nav-item"><a href="{% url 'logout' %}" class="nav-btn nav-link">Logout</a></li>
+                    {% else %}
+                    <li class="nav-item"><a href="{% url 'register' %}" class="nav-btn nav-link">Sign Up</a></li>
+                    <li class="nav-item"><a href=" {% url 'login' %} " class="nav-btn nav-link">Login</a></li>
+                    {% endif %}
+                </ul>
+                <div class="burger">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </nav>
+        </header>
+        <script src="{% static 'js/script.js' %}"></script>
+    </div>
+    {% block content %}
+
+    {% endblock content %}
+    <footer>
+
+        <small>&copy; Copyright Résumé Builder 2022</small>
+
+    </footer>
+</body>
+
+</html>

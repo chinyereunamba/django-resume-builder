@@ -1,0 +1,56 @@
+{% extends 'navbar.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <title>{% block title %}Templates{% endblock title %}</title>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="content">
+            <div class="template-container">
+                <div class="template">
+                    <div class="img">
+                        <img src="{% static 'images/resume.png' %}" alt="" srcset="">
+                    </div>
+                    <div class="btn">
+                        <a href="{% url 'personalInfo' %}">Use Template</a>
+                    </div>
+                </div>
+
+                <div class="template">
+                    <div class="img">
+                        <img src="{% static 'images/resume2.png' %}" alt="" srcset="">
+                    </div>
+                    <div class="btn">
+                        <a href="{% url 'personalInfo' %}">Use Template</a>
+                    </div>
+                </div>
+
+                <!-- <div class="template">
+                    <div class="img">
+                        <img src="{% static 'images/resume.png' %}" alt="" srcset="">
+                    </div>
+                    <div class="btn">
+                        <a href="#">Use Template</a>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    {% endblock content %}
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

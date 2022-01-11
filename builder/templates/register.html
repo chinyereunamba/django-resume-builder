@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %} " type="image/x-icon">
+    <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <title>Resume Builder | Sign Up</title>
+    <link rel="stylesheet" href="{% static 'css/form/style.css' %}">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="text">Sign Up</div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="input-data">
+                    <input type="text" name="username" id="" required>
+                    <div class="underline"></div>
+                    <label for="username">Username</label>
+                </div>
+                <div class="input-data">
+                    <input type="email" name="email" id="" required>
+                    <div class="underline"></div>
+                    <label for="email">Email Address</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-data">
+                    <input type="password" name="password1" id="" required>
+                    <div class="underline"></div>
+                    <label for="password1">Password</label>
+                </div>
+                <div class="input-data">
+                    <input type="password" name="password2" id="" required>
+                    <div class="underline"></div>
+                    <label for="password2">Confirm Password</label>
+                </div>
+            </div>
+            
+           
+
+            <div class="form-row submit-btn">
+                <div class="input-data">
+                    <div class="inner"></div>
+                    <input type="submit" value="Sign Up">
+                </div>
+            </div>
+
+            <div class="form-row btn">
+
+
+                <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+            </div>
+        </form>
+        {% for message in messages %}
+        <p class="success">{{message}}</p>
+        {% endfor %}
+    </div>
+</body>
+
+</html>

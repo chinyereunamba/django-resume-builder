@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/form/style.css' %}">
+    <title>Education Details</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="text">Education Details</div>
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            <div class="form-row">
+                <div class="input-data" style="display: flex; justify-content:center;">
+                    <p>Are you sure you want to remove <strong>{{item.school}} - {{item.degree}}</strong>?</p>
+                </div>
+            </div>
+
+            <div class="form-row submit-btn btn">
+                <div class="input-data">
+                    <div class="inner"></div>
+                    <a href="{% url 'educationInfo' %}">Go Back</a>
+                </div>
+                <div class="input-data">
+                    <div class="inner"></div>
+                    <input type="submit" value="Delete">
+                </div>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>

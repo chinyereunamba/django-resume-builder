@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/form/style.css' %}">
+    <title>Educational Details</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="text">Educational Details</div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="input-data">
+                    <input type="text" name="school" id="" required>
+                    <div class="underline"></div>
+                    <label for="school">School</label>
+                </div>
+                <div class="input-data">
+                    <input type="text" name="study_field" id="" required>
+                    <div class="underline"></div>
+                    <label for="study_field">Study Field</label>
+                </div>
+                <div class="input-data">
+                    <input type="text" name="degree" id="" required>
+                    <div class="underline"></div>
+                    <label for="degree">Degree</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-data date" style="margin-top: 10px;">
+                    <input type="date" name="start_date" id="" required>
+                    <div class="underline"></div>
+                    <label for="start_date">Start Date</label>
+                </div>
+                <div class="input-data date" style="margin-top: 10px;">
+                    <input type="date" name="end_date" id="" required>
+                    <div class="underline"></div>
+                    <label for="end_date">End Date</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-data textarea">
+                    <textarea name="description" id="" cols="30" rows="10" required></textarea>
+                    <div class="underline"></div>
+                    <label for="description">Study Description</label>
+                </div>
+            </div>
+
+            <div class="form-row submit-btn">
+                <div class="input-data">
+                    <div class="inner"></div>
+                    <input type="submit" value="add">
+                </div>
+            </div>
+
+            <div class="form-row btn">
+                <div class="input-data">
+                    <div class="inner"></div>
+                    <a href="{% url 'employmentInfo' %}">Previous</a>
+                </div>
+                <div class="input-data">
+                    <div class="inner"></div>
+                    <a href="{% url 'socialInfo' %}">Next</a>
+                </div>
+            </div>
+
+            <script>
+                var start_date = document.getElementsByName('start_date');
+                start_date.type = 'date';
+                var end_date = document.getElementsByName('end_date');
+                end_date.type = 'date';
+            </script>
+        </form>
+    </div>
+    {% for item in education %}
+    <div class="info-container" style='margin-top: 10px;'>
+        <div class="info">
+            <div class="title">
+                <h2>{{item.school}}</h2>
+                <p>{{item.degree}}</p>
+            </div>
+            <div class="date">
+                <p>{{item.start_date}} - {{item.end_date}}</p>
+            </div>
+
+            <div class="action-btn">
+                <a href="{% url 'update_education' item.id %}">Edit</a>
+                <a href="{% url 'delete_education' item.id %}">Remove</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</body>
+
+</html>

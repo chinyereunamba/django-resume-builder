@@ -1,0 +1,86 @@
+{% extends 'navbar.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <title>{% block title %}Home{% endblock %}</title>
+</head>
+
+<body>
+    <div class="main-container">
+        {% block content %}
+        <div class="intro-wrapper">
+            <div class="intro">
+                <p>Online Résumé builder</p>
+                <h1>Create your résumé online in just 5 mintues.</h1>
+                <h3>Try it for free</h3>
+                <a class="button" {% if user.is_authenticated %} href="{% url 'template' %}" {% else %}
+                    href="{% url 'login' %}" {% endif %}>Get Started <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section steps">
+                <h1>Build your résumé fast and easy.</h1>
+                <p>Creating a résumé with our résumé Builder is a fast and easy process.</p>
+
+                <div class="process">
+                    <div class=item>
+                        <div class="img">
+                            <img src="{% static 'images/step_1@2x.png' %}" alt="">
+                        </div>
+                        <p class="num">1</p>
+                        <p class="step"> Sign up or Login</p>
+                    </div>
+
+                    <div class=item>
+                        <div class="img">
+                            <img src="{% static 'images/step_2@2x.png'%}" alt="">
+                        </div>
+                        <p class="num">2</p>
+                        <p class="step">Pick a template</p>
+                    </div>
+
+                    <div class=item>
+                        <div class="img">
+                            <img src="{% static 'images/step_3@2x.png'%}" alt="">
+                        </div>
+                        <p class="num">3</p>
+                        <p class="step">Fill up the blanks</p>
+                    </div>
+
+                    <div class=item>
+                        <div class="img">
+                            <img src="{% static 'images/step_4@2x.png'%}" alt="">
+                        </div>
+                        <p class="num">4</p>
+                        <p class="step">Download résumé</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="section end">
+                <h1>Ready for that Interview?</h1>
+                <a class="button" {% if user.is_authenticated %} href="{% url 'template' %}" {% else %}
+                    href="{% url 'login' %}" {% endif %}>Get Started <i class="fas fa-arrow-right"></i></button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</body>
+{% endblock content %}
+
+</html>

@@ -1,0 +1,162 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/resume3.css' %}">
+    <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <title>Resume</title>
+</head>
+
+<body>
+    <div class="resume">
+        <div class="container">
+            <div class="header">
+                <h1 class="name">{{user.first_name}} {{user.last_name}}</h1>
+                <h3 class="caption">{{user.job_title}}</h3>
+                <p>{{summary.summary}}</p>
+            </div>
+
+            <div class="info">
+                <ul>
+                    <li><i class="fas fa-envelope"></i>{{user.email_address}}</li>
+                    <li><i class="fas fa-mobile-alt"></i>{{user.phone}}</li>
+                    <li><i class="fas fa-map-marker-alt"></i>{{user.city}}, {{user.nationality}}</li>
+                    {% for item in social %}
+                    <li><i class="fab fa-linkedin"></i>{{item.link}}</li>
+
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="resume-content">
+                <div class="resume-left">
+                    <div class="resume-item work">
+                        <p class="title">Work Experience</p>
+                        <ul>
+                            {% for item in employment %}
+                            <li class="objective">
+                                <div class="bold">{{item.job_title}}</div>
+                                <div class="semi-bold">{{item.employer}}</div>
+                                <div class="date">
+                                    <div>{{item.start_date}} - {{item.end_date}}</div>
+                                    <div>{{item.city}} {{item.country}}</div>
+                                </div>
+                                <ul>
+                                    <li>{{item.description}}</li>
+                                    <li>Perspiciatis illum, distinctio minima quasi voluptatem eligendi enim aliquid
+                                        perferendis vitae
+                                        obcaecati illo animi ratione, possimus culpa repellendus error vero corrupti
+                                        neque!</li>
+                                    <li>Minima quasi voluptatem eligendi enim aliquid
+                                        perferendis vitae
+                                        obcaecati illo animi ratione, possimus culpa repellendus error vero corrupti
+                                        neque!</li>
+                                </ul>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="resume-item education">
+                        <p class="title">Education</p>
+                        <ul>
+                            {% for item in education %}
+                            <li>
+                                <div class="bold">{{item.study_field}}</div>
+                                <div class="semi-bold">{{item.school}}</div>
+                                <div class="date">
+                                    <div>{{item.start_date}} - {{item.end_date}}</div>
+                                    <div>{{item.city}} {{item.country}}</div>
+                                </div>
+                                <ul>
+                                    <li>{{item.description}}</li>
+                                </ul>
+                            </li>
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="resume-right">
+                    <div class="resume-item skill">
+                        <p class="title">Skills</p>
+                        <div class="content">
+                            <span>Teamwork</span>
+                            <span>Leadership</span>
+                            <span>Flexibilty</span>
+                            <span>Time Management</span>
+                            <span>Empathy</span>
+                            <span>Problem Solving</span>
+                        </div>
+                    </div>
+                    <div class="resume-item language">
+                        <p class="title">Language</p>
+                        <ul>
+                            <li>
+                                <div class="lang">English</div>
+                                <div class="progress">
+                                    <span style="width: 80%;"></span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="lang">Spanish</div>
+                                <div class="progress">
+                                    <span style="width: 50%;"></span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="lang">French</div>
+                                <div class="progress">
+                                    <span style="width: 90%;"></span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="resume-item certificate">
+                        <p class="title">Certificates</p>
+                        <ul>
+                            <li>
+                                <div class="bold">MS in International Marketing and Management</div>
+                                <div class="">(2014)</div>
+                            <li style="font-size: 14px; font-style:italic; color: #777; margin-bottom:30px;">Lorem ipsum
+                                dolor sit
+                                amet consectetur adipisicing elit</li>
+                            </li>
+                            <li>
+                                <div class="bold">Marketing</div>
+                                <div class="">(2017)</div>
+                            <li style="font-size: 14px; font-style:italic; color: #777;">Lorem ipsum dolor sit amet
+                                consectetur
+                                adipisicing elit</li>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="resume-item awards">
+                        <p class="title">Awards</p>
+                        <ul>
+                            <li>
+                                <div class="bold">DevOps Cup</div>
+                                <div class="semi-bold">Google Inc</div>
+                                <div class="date">2017</div>
+                                <ul>
+                                    <li>Perspiciatis illum, distinctio minima quasi voluptatem eligendi enim aliquid
+                                        perferendis vitae obcaecati!</li>
+                                </ul>
+
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+</body>
+
+</html>

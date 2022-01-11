@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/form/style.css' %}">
+    <title>Social Details</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="text">Social Details</div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="input-data">
+                    <input type="text" name="label" id="" required>
+                    <div class="underline"></div>
+                    <label for="label">Social Account</label>
+                </div>
+                <div class="input-data">
+                    <input type="url" name="link" id="" required>
+                    <div class="underline"></div>
+                    <label for="link">Your Account Link</label>
+                </div>
+            </div>
+
+            <div class="form-row submit-btn">
+                <div class="input-data">
+                    <div class="inner"></div>
+                    <input type="submit" value="add">
+                </div>
+            </div>
+
+            <div class="form-row btn">
+                <div class="input-data">
+                    <div class="inner"></div>
+                    <a href="{% url 'educationInfo' %}">Previous</a>
+                </div>
+                <div class="input-data">
+                    <div class="inner"></div>
+                    <a href="#">Next</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    {% for item in social %}
+    <div class="info-container" style='margin-top: 10px;'>
+        <div class="info">
+            <div class="title">
+                <h3>{{item.label}}</h3>
+                <a style="color: #299cdf; word-wrap: break-word;" href="{{item.link}}" target="_blank">{{item.link}}</a>
+            </div>
+
+            <div class="action-btn">
+                <a href="{% url 'update_social' item.id %}">Edit</a>
+                <a href="{% url 'delete_social' item.id %}">Remove</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</body>
+
+</html>

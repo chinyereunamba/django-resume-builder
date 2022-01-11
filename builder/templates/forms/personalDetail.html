@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/form/style.css' %}">
+    <title>Personal Details</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="text">Personal Details</div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="input-data">
+                    {{form.first_name}}
+                    <div class="underline"></div>
+                    <label for="first_name">First Name</label>
+                </div>
+                <div class="input-data">
+                    {{form.last_name}}
+                    <div class="underline"></div>
+                    <label for="last_name">Last Name</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-data">
+                    {{form.email_address}}
+                    <div class="underline"></div>
+                    <label for="email">Email Address</label>
+                </div>
+                <div class="input-data">
+                    {{form.phone}}
+                    <div class="underline"></div>
+                    <label for="phone">Phone</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-data">
+                    {{form.job_title}}
+                    <div class="underline"></div>
+                    <label for="text">Job Title</label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="input-data">
+                    {{form.nationality}}
+                    <div class="underline"></div>
+                </div>
+                <div class="input-data">
+                    {{form.address}}
+                    <div class="underline"></div>
+                    <label for="text">City</label>
+                </div>
+            </div>
+
+            <div class="form-row submit-btn">
+                <div class="input-data">
+                    <div class="inner"></div>
+                    <input type="submit" value="save">
+                </div>
+            </div>
+
+            <div class="form-row btn">
+
+                <div class="input-data">
+                    <div class="inner"></div>
+                    <a href="{% url 'home' %}">Back Home</a>
+                </div>
+                <div class="input-data">
+                    <div class="inner"></div>
+                    <a href="{% url 'summary' %}">Next</a>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
